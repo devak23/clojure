@@ -75,6 +75,27 @@
   ; Here we are trying to use a join function of closure.string and that function is passed a list of parameters
   ; which is provided by the map function.
     (println (clojure.string/join "," (map str my-fav-superheroes)))
+
+  ; lets define a hash-map
+  (def name-map {:roll-num 1
+                 :name "Abhay Kulkarni" })
+
+  (println (get name-map :name))
+
+  ; lets define a vector
+  (def directions [3 2 1])
+  (println (get directions 0))
+
+  ; vector element could be of any type. You can mix them for instance:
+  (def mix ["a" {:name "William Wordsworth"} "c" ])
+
+  (println (get mix 1))
+
+  ; Lists are similar to vectors in that they’re linear collections of values. But there are some differences.
+  ; For example, you can’t retrieve list elements with get.
+  (def movies (list "3 idiots" "Dil Chahata hai" "Jolly LLB"))
+  (println movies)
+
 )
 ; You held your head like a hero
 ; On a history book page
