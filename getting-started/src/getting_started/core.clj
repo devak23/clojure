@@ -96,6 +96,11 @@
   (def movies (list "3 idiots" "Dil Chahata hai" "Jolly LLB"))
   (println movies)
 
+  (def fruits #{"Apple", "Mango", "Pineapple", "Guava", "Berries", "mango"})
+  (println fruits)
+
+  (println (contains? fruits "apple"))
+  (println (contains? fruits "mango"))
 )
 ; You held your head like a hero
 ; On a history book page
