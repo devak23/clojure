@@ -42,15 +42,40 @@
   ; comparing the strings
   (println (= "Gandalf The grey" "Gandalf The white"))
 
-  ; Declaration of variables. Here we are assigning a list of superheroes for a variable. It is important to note
-  ; that variable name can have a hyphen. This is quite idiomatic and the compiler will change the hyphens to underscore
+  ; Declaration of variable and binding them with values. It is important to note that variable name can have a hyphen.
+  ; This is quite idiomatic and the compiler will change the hyphens to underscore
   (def my-fav-superheroes ["IronMan" "Wanda" "Thor"])
+
+  ; you can overwrite the values, although this isn't something that's encouraged. In clojure you rarely need to alter
+  ; the name value pair.
+  (def my-fav-superheroes ["Batman", "Superman", "Aquaman"])
+
+  ; For instance consider this code: All this code does is to combine the original 'error-message' with some additional
+  ; messages depending on the severity of the :mild variable provided
+
+
+  (def severity :mild)
+  (def error-message "OH GOD! IT'S A DISASTER! WE'RE ")
+  (if (= severity :mild)
+    (def error-message (str error-message "MILDLY INCOVENIENCED"))
+    (def error-message (str error-message "DOOOOOMED!")))
+
+  ; changing the value associated with a name like this can make it harder to understand your program’s behavior
+  ; because it’s more difficult to know which value is associated with a name or why that value might have changed
+  ; Same code can be written in idiomatic way such as:
+  (defn error-message
+    [severity]
+    (str "OH GOD! IT'S A DISASTER! WE'RE "
+         (if (= severity :mild)
+           "MILDLY INCONVENIENCED!"
+           "DOOOOMED!!!!")))
+
+  (println (error-message 2))
 
   ; Here we are trying to use a join function of closure.string and that function is passed a list of parameters
   ; which is provided by the map function.
-  (println (clojure.string/join "," (map str my-fav-superheroes)))
-  )
-
+    (println (clojure.string/join "," (map str my-fav-superheroes)))
+)
 ; You held your head like a hero
 ; On a history book page
 ; It was the end of a decade
